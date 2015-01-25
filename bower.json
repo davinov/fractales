@@ -1,10 +1,9 @@
 {
-  "name": "boilerplate",
+  "name": "fractales",
   "version": "0.0.1",
   "dependencies": {
     "angular": "*",
     "angular-material": "*",
-    "angular-translate": "*",
     "angular-ui-router": "*",
     "angulartics": "*",
     "font-awesome": "*",
