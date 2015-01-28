@@ -4,3 +4,4 @@ coverage/
 www/
 npm-debug.log
 docs/build
+.c9
