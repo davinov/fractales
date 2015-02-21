@@ -10,6 +10,4 @@
 angular.module '%module%.landing', [
   'ng'
   'ui.router'
-
-  '%module%.fractales'
 ]

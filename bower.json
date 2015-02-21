@@ -9,7 +9,8 @@
     "font-awesome": "*",
     "lodash": "*",
     "momentjs": "*",
-    "mathjs": "~1.2.0"
+    "mathjs": "*",
+    "d3": "*"
   },
   "devDependencies": {
     "angular-mocks": "*"

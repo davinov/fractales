@@ -11,4 +11,5 @@ angular.module '%module%', [
   'ngMaterial'
   '%module%.utils'
   '%module%.landing'
+  '%module%.fractales'
 ]

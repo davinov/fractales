@@ -3,3 +3,34 @@
 
 // Material theme
 @require "../bower_components/angular-material/default-theme.css"
+
+html, body, .background, .foreground
+  width 100%
+  height 100%
+  overflow hidden
+
+.background, .foreground
+  position absolute
+
+body
+  font-family "Josefin Sans", sans-serif
+  background black
+
+.title
+  color white
+  padding 1em
+  opacity 0.8
+  text-align center
+
+  span.text
+    font-size 3em
+    font-weight 100
+    letter-spacing 0.3em
+    text-transform uppercase
+
+  .subtitle
+    font-weight 300
+    letter-spacing 0.8em
+
+    &::before, &::after
+      content '-'

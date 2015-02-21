@@ -4,16 +4,22 @@ html(lang="en", ng-app="%module%")
     title Fractales
     meta(charset="utf-8")
     link(rel="icon", type="image/x-icon", href="/favicon.ico")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400")
     link(rel="stylesheet", href="%styles%/app.css")
     meta(name="viewport", content="initial-scale=1.0, width:device-width")
   body
     base(href="/")
-    md-toolbar
-      .md-toolbar-tools
-        span Fractales
-    md-content.md-padding(
-      ui-view
-    )
+    .background
+      mandelbrot(
+        iterations="$root.iterations || 5"
+      )
+    .foreground
+      .title
+        span.text Fractales
+        .subtitle visions of infinity
+      .md-padding(
+        ui-view
+      )
 
     script(src="%scripts%/vendor.js")
     script(src="%scripts%/app.js")

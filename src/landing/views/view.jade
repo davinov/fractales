@@ -1,11 +1,5 @@
-mandelbrot(
-  width=500
-  height=500
-  iterations="iterations"
-)
-
 input(
   type="number"
-  ng-init="iterations = 5"
-  ng-model="iterations"
+  ng-init="$root.iterations = 5"
+  ng-model="$root.iterations"
 )

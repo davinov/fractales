@@ -8,22 +8,42 @@
 ###
 
 angular.module '%module%.fractales'
-.directive 'mandelbrot', ($timeout, Mandelbrot) ->
+.directive 'mandelbrot', ($window, Mandelbrot) ->
   restrict: 'E'
   scope:
-    height: '='
-    width: '='
     iterations: '='
   templateUrl: 'fractales/views/mandelbrot.html'
   link: (scope, el, attrs) ->
-    canvas = el.children()[0].getContext '2d'
+    canvasElement = el.children()[0]
+    canvas = canvasElement.getContext '2d'
+    [height, width] = [undefined]
+
     updateCanvas = ->
-      imageData = canvas.createImageData 500, 500
-      for x in _.range(0,500)
-        for y in _.range(0,500)
-          imageData.data[(500 * y + x) * 4] = (Mandelbrot.level (x/125 - 3), (y/125 - 2), scope.iterations) * 255/scope.iterations
-          imageData.data[(500 * y + x) * 4 + 3] = 555
+      return if not (_.isNumber(height) and _.isNumber(width))
+      imageData = canvas.createImageData height, width
+
+      xScale = d3.scale.linear()
+        .domain [0, width]
+        .range [-2, 0.5]
+      yScale = d3.scale.linear()
+        .domain [0, height]
+        .range [-1.5, 1.5]
+
+      for y in _.range 0, height
+        for x in _.range 0, width
+          point = 4 * (height * y + x)
+          imageData.data[point] = (Mandelbrot.level xScale(x), yScale(y), scope.iterations) * 255 / scope.iterations
+          imageData.data[point + 1] = 0
+          imageData.data[point + 2] = 0
+          imageData.data[point + 3] = 255
       canvas.putImageData imageData, 0, 0
 
-    $timeout updateCanvas, 100
-    scope.$watch 'iterations', -> updateCanvas()
+    resizeCanvas = ->
+      window.requestAnimationFrame ->
+        canvasElement.height = height = el.height()
+        canvasElement.width = width = el.width()
+        updateCanvas()
+
+    resizeCanvas()
+    angular.element($window).bind 'resize', resizeCanvas
+    scope.$watch 'iterations', updateCanvas
