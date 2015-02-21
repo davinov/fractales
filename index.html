@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fractales">
+  <head>
+    <title>Fractales</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400">
+    <link rel="stylesheet" href="styles/app.css">
+    <meta name="viewport" content="initial-scale=1.0, width:device-width">
+  </head>
+  <body>
+    <base href="/">
+    <div class="background">
+      <mandelbrot iterations="$root.iterations || 5"></mandelbrot>
+    </div>
+    <div class="foreground">
+      <div class="title"><span class="text">Fractales</span>
+        <div class="subtitle">visions of infinity</div>
+      </div>
+      <div ui-view class="md-padding"></div>
+    </div>
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/templates.js"></script>
+  </body>
+</html>

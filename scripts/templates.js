@@ -1,0 +1,2 @@
+angular.module("fractales").run(["$templateCache", function($templateCache) {$templateCache.put("fractales/views/mandelbrot.html","<canvas></canvas>");
+$templateCache.put("landing/views/view.html","<input type=\"number\" ng-init=\"$root.iterations = 5\" ng-model=\"$root.iterations\">");}]);
